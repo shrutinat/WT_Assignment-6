@@ -42,7 +42,7 @@ name.onblur=()=> {
   validate();
 }
 email.onblur=()=> {
-  document.getElementById("emailErr").textContent=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)?"":"Invalid email";
+  document.getElementById("emailErr").textContent=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email.value)?"":"Invalid email";
   validate();
 }
 pass.onblur=()=> {
@@ -52,5 +52,6 @@ pass.onblur=()=> {
 </script>
 </body>
 </html>
+
 
 
