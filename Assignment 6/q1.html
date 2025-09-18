@@ -32,7 +32,7 @@ let btn=document.getElementById("submitBtn");
 
 function validate(){
   let nameOk=name.value.trim()!=="";
-  let emailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value);
+  let emailOk=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email.value);
   let passOk=/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(pass.value);
   btn.disabled=!(nameOk&&emailOk&&passOk);
 }
@@ -52,4 +52,5 @@ pass.onblur=()=> {
 </script>
 </body>
 </html>
+
 
