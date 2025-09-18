@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>question 2</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    input { padding: 5px; margin-bottom: 5px; }
+    small { display:block; margin-top:3px; }
+    .ok { color:green; }
+    .err { color:red; }
+  </style>
+</head>
+<body>
+  <h3>Email Check</h3>
+  <input type="text" id="email" placeholder="Enter Email">
+  <small id="msg"></small>
+
+<script>
+let email=document.getElementById("email");
+let msg=document.getElementById("msg");
+let regex=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+email.onblur=()=>{
+  if(regex.test(email.value)){
+    msg.textContent="Valid Email ✔";
+    msg.className="ok";
+  }else{
+    msg.textContent="Invalid Email ✘";
+    msg.className="err";
+  }
+}
+</script>
+</body>
+</html>

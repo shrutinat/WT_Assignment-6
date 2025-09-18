@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>question 10</title>
+  <style>
+    body{font-family:Arial;margin:30px;}
+    select,button,input{margin:5px;padding:5px;}
+    small{display:block;margin-bottom:5px;}
+    .ok{color:green;} .err{color:red;}
+  </style>
+</head>
+<body>
+  <h3>Dynamic Form Builder</h3>
+
+  <select id="type">
+    <option value="text">Text</option>
+    <option value="email">Email</option>
+    <option value="password">Password</option>
+    <option value="username">Username</option>
+    <option value="date">Date (DD/MM/YYYY)</option>
+  </select>
+  <button type="button" id="addBtn">Add</button>
+
+  <form id="dynForm"></form>
+
+<script>
+let addBtn=document.getElementById("addBtn");
+let form=document.getElementById("dynForm");
+
+let regex={
+  text:/^[A-Za-z\s]+$/,
+  email:/^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+  password:/^(?=.*[A-Z])(?=.*\d).{8,}$/,
+  username:/^[a-zA-Z0-9_]{3,16}$/,
+  date:/^\d{2}\/\d{2}\/\d{4}$/
+};
+
+addBtn.onclick=()=>{
+  let type=document.getElementById("type").value;
+  let div=document.createElement("div");
+  let inp=document.createElement("input");
+  let msg=document.createElement("small");
+
+  inp.placeholder=type;
+  inp.type=(type==="password")?"password":(type==="email"?"email":"text");
+
+  inp.oninput=()=>{
+    if(regex[type].test(inp.value)){
+      msg.textContent="Valid ✔"; msg.className="ok";
+    }else{
+      msg.textContent="Invalid ✘"; msg.className="err";
+    }
+  };
+
+  div.appendChild(inp);
+  div.appendChild(msg);
+  form.appendChild(div);
+};
+</script>
+</body>
+</html>
+
+

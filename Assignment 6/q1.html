@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title>question 1</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    input { display:block; margin:8px 0; padding:5px; }
+    small { color:red; }
+    button { padding:5px 10px; }
+    button:disabled { background:#ccc; }
+  </style>
+</head>
+<body>
+  <h2>Registration</h2>
+  <form id="regForm">
+    <input type="text" id="name" placeholder="Name">
+    <small id="nameErr"></small>
+
+    <input type="text" id="email" placeholder="Email">
+    <small id="emailErr"></small>
+
+    <input type="password" id="pass" placeholder="Password">
+    <small id="passErr"></small>
+
+    <button type="submit" id="submitBtn" disabled>Submit</button>
+  </form>
+
+<script>
+let name=document.getElementById("name");
+let email=document.getElementById("email");
+let pass=document.getElementById("pass");
+let btn=document.getElementById("submitBtn");
+
+function validate(){
+  let nameOk=name.value.trim()!=="";
+  let emailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value);
+  let passOk=/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(pass.value);
+  btn.disabled=!(nameOk&&emailOk&&passOk);
+}
+
+name.onblur=()=> {
+  document.getElementById("nameErr").textContent=name.value?"":"Name required";
+  validate();
+}
+email.onblur=()=> {
+  document.getElementById("emailErr").textContent=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)?"":"Invalid email";
+  validate();
+}
+pass.onblur=()=> {
+  document.getElementById("passErr").textContent=/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(pass.value)?"":"Weak password";
+  validate();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>question 8</title>
+  <style>
+    #box{width:50px;height:50px;display:inline-block;border:1px solid #000;}
+  </style>
+</head>
+<body>
+  <input id="color" placeholder="#FFF or #FFFFFF">
+  <div id="box"></div>
+  <small id="msg"></small>
+
+<script>
+let color=document.getElementById("color");
+let box=document.getElementById("box");
+let msg=document.getElementById("msg");
+let regex=/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
+color.oninput=()=>{
+  if(regex.test(color.value)){
+    msg.textContent="Valid ✔"; msg.style.color="green";
+    box.style.background=color.value;
+  }else{
+    msg.textContent="Invalid ✘"; msg.style.color="red";
+    box.style.background="white";
+  }
+}
+</script>
+</body>
+</html>
+

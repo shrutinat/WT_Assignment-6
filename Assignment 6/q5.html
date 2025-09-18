@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>question 5</title>
+  <style>
+    body{font-family:Arial;margin:30px;}
+    input{display:block;margin:5px 0;padding:5px;}
+    small{display:block;margin-top:3px;}
+    .ok{color:green;}
+    .err{color:red;}
+  </style>
+</head>
+<body>
+  <h3>Set Password</h3>
+  <input type="password" id="pass" placeholder="Password">
+  <input type="password" id="cpass" placeholder="Confirm Password">
+  <small id="msg"></small>
+
+<script>
+let pass=document.getElementById("pass");
+let cpass=document.getElementById("cpass");
+let msg=document.getElementById("msg");
+
+function check(){
+  if(cpass.value==="") msg.textContent="";
+  else if(pass.value===cpass.value){
+    msg.textContent="Passwords match ✔"; msg.className="ok";
+  }else{
+    msg.textContent="Passwords do not match ✘"; msg.className="err";
+  }
+}
+
+pass.oninput=check;
+cpass.oninput=check;
+</script>
+</body>
+</html>

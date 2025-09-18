@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>question 6</title>
+  <style>
+    body{font-family:Arial;margin:30px;}
+    input{padding:5px;margin-bottom:5px;}
+    small{display:block;margin-top:3px;}
+    .ok{color:green;}
+    .err{color:red;}
+  </style>
+</head>
+<body>
+  <h3>Username Form</h3>
+  <form id="uForm">
+    <input type="text" id="user" placeholder="Enter username">
+    <small id="msg"></small>
+    <button type="submit">Submit</button>
+  </form>
+
+<script>
+let form=document.getElementById("uForm");
+let user=document.getElementById("user");
+let msg=document.getElementById("msg");
+let regex=/^[a-zA-Z0-9_]{3,16}$/;
+
+form.onsubmit=(e)=>{
+  if(!regex.test(user.value)){
+    e.preventDefault(); 
+    msg.textContent="Invalid username (3-16 letters, numbers, underscores only)";
+    msg.className="err";
+  }else{
+    msg.textContent="Valid username ✔";
+    msg.className="ok";
+  }
+}
+</script>
+</body>
+</html>

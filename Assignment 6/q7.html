@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>question 7</title>
+  <style>
+    body{font-family:Arial;margin:30px;}
+    input{padding:5px;margin-bottom:5px;}
+    small{color:red;display:block;}
+  </style>
+</head>
+<body>
+  <h3>Date Form</h3>
+  <form id="dForm">
+    <input type="text" id="date" placeholder="DD/MM/YYYY">
+    <small id="msg"></small>
+    <button type="submit">Submit</button>
+  </form>
+
+<script>
+let form=document.getElementById("dForm");
+let date=document.getElementById("date");
+let msg=document.getElementById("msg");
+let regex=/^\d{2}\/\d{2}\/\d{4}$/;
+
+form.onsubmit=(e)=>{
+  if(!regex.test(date.value)){
+    e.preventDefault(); 
+    msg.textContent="Invalid date format! Use DD/MM/YYYY";
+  }else{
+    msg.textContent="";
+    alert("Date submitted: "+date.value);
+  }
+}
+</script>
+</body>
+</html>

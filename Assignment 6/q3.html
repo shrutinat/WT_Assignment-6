@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>question 3</title>
+  <style>
+    body { font-family: Arial; margin:30px; }
+    input { padding:5px; }
+    small { display:block; margin-top:3px; }
+    .ok { color:green; }
+    .err { color:red; }
+  </style>
+</head>
+<body>
+  <h3>Phone Number</h3>
+  <input type="text" id="phone" placeholder="Enter phone">
+  <small id="msg"></small>
+
+<script>
+let phone=document.getElementById("phone");
+let msg=document.getElementById("msg");
+let regex=/^(\(\d{3}\)\s?\d{3}-\d{4}|\d{3}-\d{3}-\d{4})$/;
+
+phone.oninput=()=>{
+  if(regex.test(phone.value)){
+    msg.textContent="Valid Phone ✔";
+    msg.className="ok";
+  }else{
+    msg.textContent="Invalid Format ✘";
+    msg.className="err";
+  }
+}
+</script>
+</body>
+</html>

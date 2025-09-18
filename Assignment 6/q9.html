@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title>question 9</title>
+  <style>
+    body{font-family:Arial;margin:30px;}
+    select{padding:5px;margin:5px;}
+  </style>
+</head>
+<body>
+  <h3>Select Continent and Country</h3>
+  <select id="continent">
+    <option value="">--Choose Continent--</option>
+    <option>Africa</option>
+    <option>Asia</option>
+    <option>Europe</option>
+  </select>
+
+  <select id="country">
+    <option value="">--Choose Country--</option>
+  </select>
+
+<script>
+let data={
+  "Africa":["Nigeria","Kenya","Egypt"],
+  "Asia":["India","China","Japan"],
+  "Europe":["Germany","France","Italy"]
+};
+
+let cont=document.getElementById("continent");
+let coun=document.getElementById("country");
+
+cont.onchange=()=>{
+  coun.innerHTML="<option>--Choose Country--</option>";
+  if(data[cont.value]){
+    data[cont.value].forEach(c=>{
+      let opt=document.createElement("option");
+      opt.textContent=c;
+      coun.appendChild(opt);
+    });
+  }
+}
+</script>
+</body>
+</html>

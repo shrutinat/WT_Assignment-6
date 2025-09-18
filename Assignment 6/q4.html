@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>question 4</title>
+  <style>
+    body { font-family: Arial; margin:30px; }
+    input { display:block; margin:5px 0; padding:5px; }
+    small { color:red; display:block; margin-bottom:5px; }
+    button { margin-top:5px; padding:5px 10px; }
+  </style>
+</head>
+<body>
+  <h3>Hobbies</h3>
+  <form id="hobbyForm">
+    <div id="hobbyList">
+      <input type="text" placeholder="Enter hobby">
+      <small></small>
+    </div>
+    <button type="button" id="addBtn">Add Hobby</button>
+  </form>
+
+<script>
+let addBtn=document.getElementById("addBtn");
+let list=document.getElementById("hobbyList");
+let regex=/^[A-Za-z\s]+$/;
+
+function validate(input, msg){
+  msg.textContent=regex.test(input.value)?"":"Only letters allowed";
+}
+
+addBtn.onclick=()=>{
+  let div=document.createElement("div");
+  let inp=document.createElement("input");
+  let small=document.createElement("small");
+  inp.placeholder="Enter hobby";
+  inp.onblur=()=>validate(inp,small);
+  div.appendChild(inp);
+  div.appendChild(small);
+  list.appendChild(div);
+};
+
+
+let firstInput=list.querySelector("input");
+let firstMsg=list.querySelector("small");
+firstInput.onblur=()=>validate(firstInput,firstMsg);
+</script>
+</body>
+</html>
